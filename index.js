@@ -139,6 +139,8 @@ async function transformStation2Home(ticket, ticketInfo) {
     startDateReality: 0,
     startTimeReality: 0,
     startTime: ticket.getOffTimePlan || 0,
+    // mã báo giá FE gắn vào điểm trả → transit dùng giá đã chốt
+    transitQuoteId: ticket.pointDown?.transitQuoteId || undefined,
 
     pickupAddress: pointInfo.addressText,
     pickupName: pointInfo.displayName,
@@ -225,6 +227,8 @@ async function transformHome2Station(ticket, ticketInfo) {
     startDateReality: 0,
     startTimeReality: 0,
     startTime: ticket.getInTimePlan || 0,
+    // mã báo giá FE gắn vào điểm đón → transit dùng giá đã chốt
+    transitQuoteId: ticket.pointUp?.transitQuoteId || undefined,
     // dropoff point
     dropoffAddress: pointInfo.addressText,
     dropoffName: pointInfo.displayName,
